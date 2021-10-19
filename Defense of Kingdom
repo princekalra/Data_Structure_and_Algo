@@ -1,0 +1,45 @@
+
+#include<bits/stdc++.h>
+#define f(a,b,c) for(ll a=b;a<c;a++)
+typedef long long ll;
+using namespace std;
+void prince()
+{
+    #ifndef ONLINE_JUDGE
+    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+       freopen("input.txt","r",stdin);
+       freopen("output.txt","w",stdout);
+    #endif
+}
+int main(){
+
+   // prince();
+    int t;
+    cin>>t;
+    while(t--){
+        int w,h,n;
+        cin>>w>>h>>n;
+        vector<int>row;
+        vector<int>column;
+        row.push_back(0);
+        column.push_back(0);
+        for(int i =0;i<n;i++){
+            int x,y;
+            cin>>x>>y;
+            row.push_back(x);
+            column.push_back(y);
+        }
+        row.push_back(w+1);
+        column.push_back(h+1);
+        sort(row.begin(),row.end());
+        sort(column.begin(),column.end());
+        int mxrow = 0;
+        int mxcolumn =0;
+        for(int i=0;i<=n;i++){
+            mxrow = max(mxrow,row[i+1]-row[i]-1);
+            mxcolumn = max(mxcolumn,column[i+1]-column[i]-1);
+        }
+        cout<<(mxrow*mxcolumn)<<endl;
+    }
+    return 0;
+}
